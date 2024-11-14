@@ -1,0 +1,62 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+<div class="container centered-container">
+    <h1 class="centered-title" >@ViewData["Title"]</h1>
+    <div class="centered-form">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <section>
+                    <form id="account" method="post">
+                        @* <h2>Use a local account to log in.</h2> *@
+                        <hr />
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" id="EmailField" />
+                            <label asp-for="Input.Email" class="form-label"></label>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                            <label asp-for="Input.Password" class="form-label"></label>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <div class="checkbox-container">
+                                <input class="form-check-input" asp-for="Input.RememberMe" id="remember-password"/>
+                                <label asp-for="Input.RememberMe" class="checkbox-label" id="remember-label">@Html.DisplayNameFor(m => m.Input.RememberMe)</label>
+                            </div>
+                    
+                        </div>
+                        <div>
+                            <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                        </div>
+                        <div class="link-container ">
+                        
+                                <a id="forgot-password" asp-page="./ForgotPassword" class="custom-link ">Forgot your password?</a>
+                        </div>
+                    </form>
+                </section>
+            </div>
+    </div>        
+    </div>
+</div>
+@* click selected area  Pointer*@
+<script>
+    document.querySelector('.checkbox-container').addEventListener('click', function() {
+        var checkbox = document.getElementById('remember-password');
+        if (event.target.tagName !== 'INPUT') {
+            checkbox.checked = !checkbox.checked;
+        }
+    });
+</script>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    
+    <script> document.getElementById('EmailField').focus(); </script>
+}
+
+

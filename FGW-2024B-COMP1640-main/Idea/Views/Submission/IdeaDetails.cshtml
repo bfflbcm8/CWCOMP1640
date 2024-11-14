@@ -1,0 +1,105 @@
+﻿@model Idea.Models.NIdea
+
+@{
+    ViewData["Title"] = "Details";
+    var Comments = (List<Comment>)ViewData["Comments"];
+}
+
+<h1 class="breadcrumb-item active text-center" aria-current="page">@ViewData["Title"]</h1>
+
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-3 col-lg-8 pl-4 pr-4 mt-5">
+            <table class="table table-bordered">
+                <thead class="table-dark bg-success text-center">
+                    <!-- Optional header content -->
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Title)</th>
+                        <td>@Html.DisplayFor(model => model.Title)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Brief)</th>
+                        <td>@Html.DisplayFor(model => model.Brief)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Content)</th>
+                        <td>@Html.DisplayFor(model => model.Content)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.FilePath)</th>
+                        <td>
+                            @if (!string.IsNullOrEmpty(Model.FilePath))
+                            {
+                                var filePath = Model.FilePath.ToLower();
+                                if (filePath.EndsWith(".jpg") || filePath.EndsWith(".jpeg") || filePath.EndsWith(".png") || filePath.EndsWith(".gif"))
+                                {
+                                    <img src="@Url.Content("~/images/" + System.IO.Path.GetFileName(Model.FilePath))" alt="Image" class="img-fluid" style="max-width: 200px; height: auto;" />
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(model => model.FilePath)
+                                }
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(model => model.FilePath)
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.View)</th>
+                        <td>@Html.DisplayFor(model => model.View)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Submission)</th>
+                        <td>@Html.DisplayFor(model => model.Submission.Id)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Category)</th>
+                        <td>@Html.DisplayFor(model => model.Category.Id)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.UserId)</th>
+                        <td>@Html.DisplayFor(model => model.UserId)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @if (Model.Submission.Deadline_2 >= DateTime.Now)
+    {
+        <div class="row justify-content-center">
+            <div class="col-3 col-lg-8 pl-4 pr-4 mt-3">
+                <form class="input-group mb-3" asp-action="Comment">
+                    <input type="hidden" name="IdeaId" value="@Model.Id" />
+                    <input type="text" class="form-control" placeholder="Comment" name="Content">
+                    <button class="btn btn-outline-success" type="submit">Comment</button>
+                </form>
+            </div>
+        </div>
+    }
+
+    <div class="row justify-content-center">
+        <div class="col-3 col-lg-8 pl-4 pr-4 mt-3">
+            @foreach (var comment in Comments)
+            {
+                <hr />
+                <div>(@comment.Created_Date) - @comment.Content</div>
+            }
+        </div>
+    </div>
+    
+    <div class="row justify-content-center">
+        <div class="col-3 col-lg-8 pl-4 pr-4 mt-3">
+            <hr />
+            <a asp-action="ViewIdeas" asp-route-submissionid="@Model.SubmissionId" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,91 @@
+﻿@model Idea.Models.Submission
+
+@{
+    ViewData["Title"] = "Details";
+    var Ideas = (List<NIdea>)ViewData["Ideas"];
+}
+
+<h1 class="text-center">List of Ideas</h1>
+
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-3 col-lg-3 pl-4 pr-4 mt-5">
+            <table class="table table-bordered">
+                <thead class="table-dark bg-success text-center">
+                    <!-- Optional header content -->
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <td>@Html.DisplayFor(model => model.Name)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Deadline_1)</th>
+                        <td>@Html.DisplayFor(model => model.Deadline_1)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Deadline_2)</th>
+                        <td>@Html.DisplayFor(model => model.Deadline_2)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="text-center" style="padding-bottom: 50px;">
+        <a asp-action="Index" class="btn btn-secondary btn">Back</a>
+        @if ((DateTime.Now - Model.Deadline_1).TotalMilliseconds <= 0)
+        {
+            <a asp-action="AddIdea" asp-route-submissionid="@Model.Id" class="btn btn-success">Add Idea</a>
+        }
+    </div>
+    <hr>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        @foreach (var idea in Ideas)
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate" style="max-width: 100%;">@idea.Title</h5>
+                        <p class="card-text">@idea.Brief</p>
+                        <div class="d-flex justify-content-between mt-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-eye"></i>
+                                <p class="mb-0 ml-2">@idea.View</p>
+                                <a asp-action="IdeaDetails" class="btn btn-primary btn-icon btn-sm ml-2" asp-route-id="@idea.Id" style="width: 80px; height: 30px;">Views</a>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-thumbs-up"></i>
+                                <p class="mb-0 ml-2">@idea.Reactions.Where(r => r.Type == 1).Count()</p>
+                                <a asp-action="Like" class="btn btn-success btn-icon btn-sm ml-2" asp-route-ideaid="@idea.Id" style="width: 80px; height: 30px;">Like</a>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-thumbs-down"></i>
+                                <p class="mb-0 ml-2">@idea.Reactions.Where(r => r.Type == 2).Count()</p>
+                                <a asp-action="Dislike" class="btn btn-danger btn-icon btn-sm ml-2" asp-route-ideaid="@idea.Id" style="width: 80px; height: 30px;">Dislike</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .text-truncate {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .btn-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        margin-left: 5px;
+    }
+</style>

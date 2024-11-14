@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Idea.Models.Submission>
+
+@{
+    ViewData["Title"] = "Submission Index";
+}
+
+<div class="container FixPaddingBottom">
+    <div class="row justify-content-center">
+        <div class="col-5 text-center">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            var bgColor = "bg-success";
+
+            if (item.Deadline_2 < DateTime.Now)
+            {
+                bgColor = "bg-danger";
+            }
+            else if (item.Deadline_1 < DateTime.Now)
+            {
+                bgColor = "bg-warning";
+            }
+
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card @bgColor">
+                    <div class="card-body text-dark">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <p class="card-text">
+                            <strong>Deadline 1:</strong> <span class="text-dark">@Html.DisplayFor(modelItem => item.Deadline_1)</span><br />
+                            <strong>Deadline 2:</strong> <span class="text-dark">@Html.DisplayFor(modelItem => item.Deadline_2)</span>
+                        </p>
+                        
+                        <div class="d-flex justify-content-between mb-2">
+                            <a asp-action="ViewIdeas" asp-route-submissionid="@item.Id" class="btn btn-light btn-icon btn-sm">
+                                <i class="fas fa-lightbulb"></i> View Ideas
+                            </a>
+                            @if (User.IsInRole("Manager"))
+                            {
+                                <a asp-action="ExportExcel" asp-route-submissionid="@item.Id" class="btn btn-light btn-icon btn-sm">
+                                    <i class="fas fa-file-excel"></i> Export Excel
+                                </a>
+                                <a asp-action="ExportZIP" asp-route-submissionid="@item.Id" class="btn btn-light btn-icon btn-sm">
+                                    <i class="fas fa-file-archive"></i> Export ZIP
+                                </a>
+                            }
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+
+<style>
+    .card {
+        min-height: 150px;
+    }
+
+    .btn-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+    }
+
+    .btn-icon i {
+        margin-right: 5px;
+    }
+
+    .bg-success {
+        background-color: #05cd34 !important;
+    }
+
+    .bg-warning {
+        background-color: #dcd620 !important;
+    }
+
+    .bg-danger {
+        background-color: #f46270 !important;
+    }
+
+    .text-dark {
+        color: #000000 !important;
+    }
+</style>

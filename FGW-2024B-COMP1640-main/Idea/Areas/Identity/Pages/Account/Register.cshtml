@@ -1,0 +1,58 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+<div asp-validation-summary="ModelOnly" class="text-danger FixPaddingTop validation-error-total "></div>
+<div class="container centered-container  FixPaddingTop">
+    <h1 class="centered-title FixPaddingTop">@ViewData["Title"]</h1>
+    <div class="centered-form">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true"
+                            id="EmailField" />
+                        <label asp-for="Input.Email"></label>
+                        <span asp-validation-for="Input.Email" class="text-danger validation-error"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Password" class="form-control" autocomplete="new-password"
+                            aria-required="true" />
+                        <label asp-for="Input.Password"></label>
+                        <span asp-validation-for="Input.Password" class="text-danger validation-error"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password"
+                            aria-required="true" />
+                        <label asp-for="Input.ConfirmPassword"></label>
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger ml-2 validation-error"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Input.Department" class="control-label"></label>
+                        <select asp-for="Input.Department" class="form-control" asp-items="ViewBag.Department"></select>
+
+                    </div>
+                    <div class="row justify-content-center mt-3 FixPaddingBottom ">
+                        <div class="col-8 text-center">
+                            <button id="registerSubmit" type="submit"
+                                class="w-100 btn btn-lg btn-primary">Register</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.getElementById('EmailField').focus();
+
+       
+    </script>
+}

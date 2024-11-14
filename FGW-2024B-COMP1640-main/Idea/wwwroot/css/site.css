@@ -1,0 +1,399 @@
+﻿html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+/*navbar*/
+ .navbar {
+  background-color: #08f0cd !important; 
+  border-bottom: 1px solid #0056b3 !important; /* Border color */
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; padding: 10px;
+  
+}
+
+/*Header*/
+/*Delete .  menu */
+ul.MenuToggleRight-navbar-nav, ul.Menu-Toggle-navbar { 
+  list-style: none; /* Loại bỏ dấu bullet */ 
+  padding-left: 0; /* Đặt lại padding nếu cần */ 
+  margin-left: 0; /* Đặt lại margin nếu cần */ 
+  
+}
+
+/*navbar right account -logout*/
+.navbarLogoutRight {
+  display: inline-block;
+    /* Đảm bảo phần tử chỉ chiếm không gian cần thiết */
+    max-width: 100%;
+    /* Đảm bảo không tràn khỏi phạm vi cha */
+    margin-left: auto;
+    /* Tự động căn trái */
+    margin-right: auto;
+    /* Tự động căn phải */
+    text-align: right;
+    /* Canh giữa chữ */
+    white-space: nowrap;
+}
+.navbarLogoutLeft {
+  display: inline-block;
+    /* Đảm bảo phần tử chỉ chiếm không gian cần thiết */
+    max-width: 100%;
+    /* Đảm bảo không tràn khỏi phạm vi cha */
+    margin-left: auto;
+    /* Tự động căn trái */
+    margin-right: auto;
+    /* Tự động căn phải */
+    text-align: left;
+    /* Canh giữa chữ */
+    white-space: nowrap;
+}
+/*  Navbar-Mid -Views-Shared-_Layout.cshtml*/
+.borderNavbarMid { 
+  margin-left: 50 px;
+  margin-right: 5px;
+  
+}
+/*Menu navbar when device PC*/
+
+
+/*Menu navbar when toggle device */
+.MenuToggle-navbar { 
+  display: flex; 
+  justify-content: space-between; /* Giữ menu bên trái và hình bên phải */ 
+  align-items: flex-end; 
+  padding: 100px; }  
+
+.MenuLeft-TitleCenter-PC-navbar-nav { 
+  
+  order: 2; 
+  flex: 1;; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: flex-start; /* Canh menu sang trái */ 
+}
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+  /* Canh phải phần tử */
+  align-items: center;
+  /* Căn giữa theo trục ngang */
+}
+@media (max-width: 767px) {
+  .navbar-collapse {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    /* Canh phải khi toggle */
+  }
+}
+  /*Image - menu - navbar left */
+  .ImageMenuLeft-navbar-brand { 
+    display: flex; 
+    justify-content: flex-end; /* Canh hình sang phải */ 
+    margin-left: 0px ; /* Đẩy hình sang bên phải */ }
+/* ---------logout-Views-Shared-_LoginPartial.cshtml----------------*/
+.hoverlogout {
+  
+  
+  padding: 5px 5px;
+  border-radius: 44px;
+  text-align: center;
+  display: inline-block; /* border fits text*/
+}
+
+.hoverlogout:hover {
+  background-color: rgb(254, 174, 3); /* Màu nền khác khi hover */
+  color:#f30606 !important; 
+  
+}
+
+
+/* Login- Views-Shared-_LoginPartial.cshtml*/
+.loginHomepage {
+  color: rgb(6, 46, 248);
+  padding: 5px 5px;
+  border-radius: 44px;
+  text-align: center;
+  display: inline-block; /* border fits text*/
+}
+.loginHomepage:hover {
+  background-color: rgb(3, 3, 254); /* Màu nền khác khi hover */
+  color:#fcfefe !important; 
+}
+/*Register Views-Shared-_LoginPartial.cshtml */
+.registerHomepage {
+  color: rgb(6, 46, 248);
+  padding: 5px 5px;
+  border-radius: 44px;
+  text-align: center;
+  display: inline-block; /* border fits text*/
+  
+}
+.registerHomepage:hover {
+  background-color: rgb(3, 3, 254); /* Màu nền khác khi hover */
+  color:#fcfefe !important; 
+  
+}
+
+
+        /* body*/
+/* fix padding bottom*/
+.FixPaddingBottom {
+  padding-bottom: 50px;
+  
+}
+/*fix padding top**/
+.FixPaddingTop {
+  padding-top: 50px;
+  
+}
+
+/*div elements that should have equal dimensions*/
+.fixed-size {
+  width: 400px;
+  /* Adjust the width as needed */
+  height: 200px;
+  /* Adjust the height as needed */
+  display: flex;
+    
+    
+}
+.fixed-size-DivSubmission {
+  width: 440px;
+  /* Adjust the width as needed */
+  height: 230px;
+  /* Adjust the height as needed */
+  display: flex;   
+}
+/* horizontal line limited*/
+hr.limited {
+  width: 50%;
+  /* Điều chỉnh % để thay đổi độ dài */
+  margin: 0 auto;
+}
+
+body {
+  background-color: #f5f5f5; 
+  color: black; /* text color black */
+  
+}
+       /* --------------------------*/
+/* Welcome */
+.WelcomeTitle {
+  color: #f3a806;
+  display: inline-block;
+    /* Đảm bảo phần tử chỉ chiếm không gian cần thiết */
+    max-width: 100%;
+    /* Đảm bảo không tràn khỏi phạm vi cha */
+    margin-left: 300px;
+    /* Tự động căn trái */
+    margin-right: 200px;
+    /* Tự động căn phải */
+    text-align: center;
+    /* Canh giữa chữ */
+    white-space: nowrap;
+    /* Đảm bảo chữ không bị xuống dòng */
+    
+}
+.WelcomeTitleHomepage{
+  color: #f3a806;
+  display: inline-block;
+    /* Đảm bảo phần tử chỉ chiếm không gian cần thiết */
+    max-width: 100%;
+    /* Đảm bảo không tràn khỏi phạm vi cha */
+    margin-left: 40px;
+    /* Tự động căn trái */
+    margin-right: 540px;
+    /* Tự động căn phải */
+    
+    /* Canh giữa chữ */
+    white-space: nowrap;
+    /* Đảm bảo chữ không bị xuống dòng */
+    
+}
+
+/*  - View - home - Index - title image*/
+.ViewHomeIndeximage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 40px;
+  /* Khoảng cách giữa các ô */
+}
+.ViewHomeIndeximage-container {
+  border: 1px solid #ccc;
+  /* Đường viền xám nhạt cho ô vuông */
+  border-radius: 25px;
+  /* Góc bo tròn */
+  padding: 25px;
+  /* Khoảng cách bên trong ô */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  /* Độ cao của ô vuông */
+  width: 350px;
+  /* Độ rộng của ô vuông */
+  overflow: hidden;
+    /* Đảm bảo hình ảnh không tràn ra ngoài ô */
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s;
+  
+}
+.ViewHomeIndeximage-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  /* Điều chỉnh hình ảnh vừa khít ô vuông */
+}
+
+.ViewHomeIndeximage-container:hover {
+  transform: scale(1.1);
+  /* Phóng to 3D */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* Hiệu ứng sáng lên */
+}
+.ViewHomeIndeximage-container::before {
+  content: attr(title);
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* Đảm bảo không chặn các sự kiện chuột trên phần tử khác */
+}
+.ViewHomeIndeximage-container:hover::before {
+  opacity: 1;
+}
+
+/* Login Page  --- login-submit  */
+#login-submit {
+      margin-bottom: 20px; /* Adjust the distance as desired */
+}
+/* register-submit*/
+#registerSubmit {
+  margin-top: 20px; /* Adjust the distance as desired */
+}
+           /* --------------------------*/
+
+/*Login Page  custom Forgot your password? - Register as a new user  */
+
+.link-container {
+  display: flex;
+  justify-content: center; /* Center the links horizontally */
+  justify-content: center; /* Center the links horizontally */
+  flex-direction: column; /* Place links in a column */
+  align-items: center; /* Center the links vertically */
+  margin-top: 5px; /* Add some space above the links */
+}
+          /*------------------------------------------------------------*/
+ /*Login Page - checkbox-container - pointer */          
+.checkbox-container {
+    color: rgb(42, 10, 250);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    border: 2px solid white;
+    padding: 5px 10px;
+    background-color: rgba(243, 238, 238, 0.934);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.checkbox-container:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;/* Add cursor to indicate clickable area*/
+}
+.checkbox-label {
+    margin-left: 5px;
+    color: rgb(42, 10, 250);
+    font-weight: bold;
+    cursor: pointer;
+}
+   
+/* Register Page  --  */
+.form-floating {
+  margin-bottom: 15px; /* Adjust the distance as desired*/
+}
+.form-group {
+  margin-bottom: 15px; /* Adjust spacing for select input*/
+  
+}
+
+/*Combo box - select*/
+
+
+
+/* Title and form center*/
+.centered-title {
+  color: blue; /* color blue title */
+  text-align: center;
+  margin-top: 20px;
+}
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;  /* hight header between body*/
+  flex-direction: column;
+}
+    
+.centered-form {
+  width: 100%;
+  max-width: 600px;
+}
+.centered-title {
+  text-align: center;
+}
+/* --------------------------*/
+
+/* footer color white and center*/
+footer {
+  
+  background-color: white;
+  color: black; /* text color black*/
+  
+  text-align: center;
+  border-top: 1px solid #e7e7e7;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 500; /* footer top*/
+}
+       /* -----------Validation Error---------------*/
+
+.validation-error {
+position: absolute;
+left: 420px;
+transform: translateX(100%);
+top: 50%;
+
+transform: translateY(-50%);
+white-space: nowrap;
+padding-left: 10px;
+}
+.validation-error-total {
+  position: absolute;
+  left: 20px;
+  transform: translateX(100%);
+  top: 28%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  padding-left: 10px;
+  }
+    

@@ -1,0 +1,172 @@
+﻿@model Idea.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<h1 class="breadcrumb-item active text-center" aria-current="page">@ViewData["Title"] (<em>@Model.UserName</em>)</h1>
+
+<div class="container">
+    <form asp-action="Edit" class="row justify-content-center" style="padding-bottom: 50px;">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="NormalizedUserName" />
+        <input type="hidden" asp-for="NormalizedEmail" />
+        <input type="hidden" asp-for="EmailConfirmed" />
+        <input type="hidden" asp-for="PasswordHash" />
+        <input type="hidden" asp-for="SecurityStamp" />
+        <input type="hidden" asp-for="ConcurrencyStamp" />
+        <input type="hidden" asp-for="PhoneNumberConfirmed" />
+
+        <div class="col-4">
+            <h5 class="mb-4 text-center">Account Information</h5>
+            <div class="form-group row align-items-center">
+                <label asp-for="UserName" class="col-sm-4 col-form-label text-right"><strong>Username:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="Email" class="col-sm-4 col-form-label text-right"><strong>Email:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="PhoneNumber" class="col-sm-4 col-form-label text-right"><strong>Phone Number:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="TwoFactorEnabled" class="col-sm-4 col-form-label text-right"><strong>Two Factor Enabled:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="TwoFactorEnabled" class="form-control" />
+                    <span asp-validation-for="TwoFactorEnabled" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="LockoutEnd" class="col-sm-4 col-form-label text-right"><strong>Lockout End:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="LockoutEnd" class="form-control" />
+                    <span asp-validation-for="LockoutEnd" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="LockoutEnabled" class="col-sm-4 col-form-label text-right"><strong>Lockout Enabled:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="LockoutEnabled" class="form-control" />
+                    <span asp-validation-for="LockoutEnabled" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="AccessFailedCount" class="col-sm-4 col-form-label text-right"><strong>Access Failed Count:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="AccessFailedCount" class="form-control" />
+                    <span asp-validation-for="AccessFailedCount" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <h5 class="mb-4 text-center">Profile</h5>
+            <div class="form-group row align-items-center">
+                <label asp-for="FirstName" class="col-sm-4 col-form-label text-right"><strong>First Name:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="LastName" class="col-sm-4 col-form-label text-right"><strong>Last Name:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="SSN" class="col-sm-4 col-form-label text-right"><strong>SSN:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="SSN" class="form-control" />
+                    <span asp-validation-for="SSN" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="PassportID" class="col-sm-4 col-form-label text-right"><strong>Passport ID:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="PassportID" class="form-control" />
+                    <span asp-validation-for="PassportID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="Gender" class="col-sm-4 col-form-label text-right"><strong>Gender:</strong></label>
+                <div class="col-sm-8">
+                    <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-control">
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="Birthday" class="col-sm-4 col-form-label text-right"><strong>Birthday:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="Birthday" class="form-control" />
+                    <span asp-validation-for="Birthday" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="AlternativeEmail" class="col-sm-4 col-form-label text-right"><strong>Alternative Email:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="AlternativeEmail" class="form-control" />
+                    <span asp-validation-for="AlternativeEmail" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="AlternativePhone" class="col-sm-4 col-form-label text-right"><strong>Alternative Phone:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="AlternativePhone" class="form-control" />
+                    <span asp-validation-for="AlternativePhone" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="Address" class="col-sm-4 col-form-label text-right"><strong>Address:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label asp-for="Others" class="col-sm-4 col-form-label text-right"><strong>Others:</strong></label>
+                <div class="col-sm-8">
+                    <input asp-for="Others" class="form-control" />
+                    <span asp-validation-for="Others" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 text-center mb-5">
+            <a asp-action="Index" class="btn btn-secondary">Back</a>
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+@section Scripts { @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }

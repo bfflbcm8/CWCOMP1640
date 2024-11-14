@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+
+@{
+    ViewData["Title"] = "Role Index";
+}
+
+<div class="container FixPaddingBottom">
+    <div class="row justify-content-center">
+        <div class="col-8 text-center">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="row justify-content-center">
+            <div class="col-auto border p-2 mb-2 d-flex align-items-center justify-content-between" style="max-width: fit-content;">
+                <div style="display: inline-block;">
+                    <div>
+                        <strong>@Html.DisplayNameFor(model => model.Id):</strong> @Html.DisplayFor(modelItem => item.Id)
+                    </div>
+                    <div>
+                       <strong> @Html.DisplayNameFor(model => model.Name):</strong> @Html.DisplayFor(modelItem => item.Name)
+                    </div>
+                    <div>
+                        <strong>Concurrency Stamp:</strong> @Html.DisplayFor(modelItem => item.ConcurrencyStamp)
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; margin-left: 10px;">
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm mb-1">
+                        Delete
+                    </a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm">
+                        Edit
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row justify-content-center mt-3 FixPaddingBottom">
+        <div class="col-8 text-center">
+            <a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Back</a>
+            <a class="btn btn-primary" asp-action="Create">Create New</a>
+        </div>
+    </div>
+</div>

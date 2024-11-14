@@ -1,0 +1,84 @@
+﻿@model Idea.Models.NIdea
+
+@{
+    ViewData["Title"] = "Add Idea";
+}
+
+<h1 class="breadcrumb-item text-center" aria-current="page">@ViewData["Title"]</h1>
+
+<div class="container">
+    <form asp-action="AddIdea" enctype="multipart/form-data" class="row justify-content-center">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="SubmissionId" class="form-control" value="@ViewBag.SubmissionId">
+        <input type="hidden" asp-for="UserId" class="form-control" value="@ViewBag.UserId">
+        <input type="hidden" asp-for="View" class="form-control" value="0" />
+        <input type="hidden" asp-for="FilePath" value="" class="form-control" />
+
+        <div class="col-8">
+            <div class="form-group row justify-content-center">
+                <label asp-for="Title" class="col-sm-1 col-form-label text-right"><strong>Title:</strong></label>
+                <div class="col-sm-4">
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8">
+            <div class="form-group row justify-content-center">
+                <label asp-for="Brief" class="col-sm-1 col-form-label text-right"><strong>Brief:</strong></label>
+                <div class="col-sm-4">
+                    <input asp-for="Brief" class="form-control" />
+                    <span asp-validation-for="Brief" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8">
+            <div class="form-group row justify-content-center">
+                <label asp-for="Content" class="col-sm-1 col-form-label text-right"><strong>Content:</strong></label>
+                <div class="col-sm-4">
+                    <input asp-for="Content" class="form-control" />
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8">
+            <div class="form-group row justify-content-center">
+                <label class="col-sm-1 col-form-label text-right"><strong>File:</strong></label>
+                <div class="col-sm-4">
+                    <input type="file" name="file" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8">
+            <div class="form-group row justify-content-center">
+                <div class="col-sm-5 offset-sm-2">
+                    <input type="checkbox" name="isAcceptTerms" value="True" />
+                    Term with the Idea
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8">
+            <div class="form-group row justify-content-center">
+                <label asp-for="CategoryId" class="col-sm-1 col-form-label text-right"><strong>Category:</strong></label>
+                <div class="col-sm-4">
+                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 text-center mb-5">
+            <a asp-action="ViewIdeas" asp-route-submissionid="@ViewBag.SubmissionId" class="btn btn-secondary">Back</a>
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

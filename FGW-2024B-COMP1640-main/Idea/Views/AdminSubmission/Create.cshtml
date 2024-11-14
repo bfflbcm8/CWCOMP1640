@@ -1,0 +1,53 @@
+@model Idea.Models.Submission
+
+@{
+    ViewData["Title"] = "Create Submission";
+}
+
+<h1 class="breadcrumb-item text-center" aria-current="page">@ViewData["Title"]</h1>
+
+<div class="container ">
+    <form asp-action="Create" class="row justify-content-center">
+        
+
+        <div class="col-8 " >
+            <div class="form-group row justify-content-center">
+                <label asp-for="Name" class="col-sm-2 col-form-label text-right"><strong>Name:</strong></label>
+                <div class="col-sm-4">
+                    <input asp-for="Name" class="form-control" id="NameField" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8">
+            <div class="form-group row justify-content-center">
+                <label asp-for="Deadline_1" class="col-sm-2 col-form-label text-right"><strong>Deadline 1:</strong></label>
+                <div class="col-sm-4">
+                    <input asp-for="Deadline_1" class="form-control" />
+                    <span asp-validation-for="Deadline_1" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8">
+            <div class="form-group row justify-content-center">
+                <label asp-for="Deadline_2" class="col-sm-2 col-form-label text-right"><strong>Deadline 2:</strong></label>
+                <div class="col-sm-4">
+                    <input asp-for="Deadline_2" class="form-control" />
+                    <span asp-validation-for="Deadline_2" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 text-center mb-5">
+            <a asp-action="Index" class="btn btn-secondary">Back</a>
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}  
+    <script> document.getElementById('NameField').focus(); </script>
+}
